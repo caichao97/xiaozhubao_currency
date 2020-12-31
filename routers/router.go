@@ -1,10 +1,10 @@
 package routers
 
 import (
-	"xiaozhubao_currency/controllers"
 	beego "github.com/beego/beego/v2/server/web"
+	"xiaozhubao_currency/controllers"
 )
 
 func init() {
-    beego.Router("/", &controllers.MainController{})
+    beego.Router("/getId", &controllers.SnowController{})
 }

@@ -4,12 +4,17 @@ import (
 	beego "github.com/beego/beego/v2/server/web"
 )
 
-type MainController struct {
+type BaseController struct {
 	beego.Controller
 }
 
-func (c *MainController) Get() {
-	c.Data["Website"] = "beego.me"
-	c.Data["Email"] = "astaxie@gmail.com"
-	c.TplName = "index.tpl"
+type JSONS struct {
+	Code int
+	Msg  string
+	List map[string]string
+}
+
+func (base BaseController) outJson(list map[string]string,code int,msg string){
+	base.Data["json"] = &JSONS{code,msg,list}
+	base.ServeJSON()
 }
