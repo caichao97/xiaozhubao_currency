@@ -1,6 +1,6 @@
 /xiaozhubao_currency
 /lastupdate.tmp
-go.mod
+/go.mod/
 go.sum
 /conf/*-local.conf
 .idea
