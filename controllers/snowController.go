@@ -17,6 +17,13 @@ func (snow *SnowController) Post(){
 		snow.outJson(snow.ListMap,201,"FAIL workId is must")
 	}
 	snowWorker, _ := helper.NewWorker(workId) //初始化工作节点
-	snow.ListMap["ID"] = strconv.FormatInt(snowWorker.GetId(),10)
+	uuid := snowWorker.GetId()
+	//user := models.User{Id: uuid,Name: "test"}
+	//orms :=orm.NewOrm()
+	//id, errors := orms.Insert(&user)
+	//if errors != nil {
+	//	snow.outJson(snow.ListMap,201,"FAIL")
+	//}
+	snow.ListMap["ID"] = strconv.FormatInt(uuid,10)
 	snow.outJson(snow.ListMap,200,"SUCCESS")
 }
