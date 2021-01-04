@@ -6,5 +6,5 @@ import (
 )
 
 func init() {
-    beego.Router("/getId", &controllers.SnowController{})
+    beego.Router("/getId", &controllers.SnowController{},"*:GetId")
 }
