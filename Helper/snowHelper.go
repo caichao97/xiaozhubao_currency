@@ -33,10 +33,10 @@ type Worker struct {
 // 实例化一个工作节点
 func NewWorker(workerId int64) (*Worker, error) {
 	// 要先检测workerId是否在上面定义的范围内
-	//if workerId < 0 {
-	//	return nil, errors.New("Worker ID excess of quantity")
-	//}
-	if workerId < 0 || workerId > workerMax {
+	if workerId <= 0 {
+		return nil, errors.New("Worker ID excess of quantity")
+	}
+	if workerId <= 0 || workerId > workerMax {
 		return nil, errors.New("Worker ID excess of quantity")
 	}
 	// 生成一个新节点

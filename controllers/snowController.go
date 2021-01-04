@@ -12,7 +12,7 @@ type SnowController struct {
 	ListMap map[string]string
 }
 
-func (snow *SnowController) GetId(){
+func (snow *SnowController) GetId() {
 	workId, _ := snow.GetInt64("workId",0)
 	snow.ListMap = make(map[string]string)
 	if workId == 0 {
