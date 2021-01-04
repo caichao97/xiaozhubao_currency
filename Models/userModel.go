@@ -5,19 +5,20 @@ import (
 	_ "github.com/go-sql-driver/mysql" // import your used driver
 )
 
-type UserModel struct {
-	base baseModel
-}
-type User struct {
+type Workids struct {
 	Id int64
-	Name string
+	WorkId int64
 }
 
-func (user UserModel)init(){
-	user.base.init()
-	orm.RegisterModel(new(User))
+func (WorkIds *Workids) TableName() string {
+	return "Workids"
 }
 
-func (u *User) TableName() string {
-	return "User"
+func init() {
+	orm.RegisterModel(new(Workids))
+
+	orm.RegisterDriver("mysql", orm.DRMySQL)
+
+	// set default database
+	orm.RegisterDataBase("default", "mysql", "root:@tcp(127.0.0.1:3306)/currency_service?charset=utf8")
 }

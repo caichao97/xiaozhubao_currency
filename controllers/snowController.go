@@ -1,8 +1,10 @@
 package controllers
 
 import (
+	"github.com/astaxie/beego/orm"
 	"strconv"
 	helper "xiaozhubao_currency/Helper"
+	models "xiaozhubao_currency/Models"
 )
 
 type SnowController struct {
@@ -18,12 +20,12 @@ func (snow *SnowController) Post(){
 	}
 	snowWorker, _ := helper.NewWorker(workId) //初始化工作节点
 	uuid := snowWorker.GetId()
-	//user := models.User{Id: uuid,Name: "test"}
-	//orms :=orm.NewOrm()
-	//id, errors := orms.Insert(&user)
-	//if errors != nil {
-	//	snow.outJson(snow.ListMap,201,"FAIL")
-	//}
+	workids := models.Workids{Id: uuid,WorkId: workId}
+	orms :=orm.NewOrm()
+	_,errors :=orms.Insert(&workids)
+	if errors != nil {
+		snow.outJson(snow.ListMap,201,"FAIL")
+	}
 	snow.ListMap["ID"] = strconv.FormatInt(uuid,10)
 	snow.outJson(snow.ListMap,200,"SUCCESS")
 }
