@@ -11,7 +11,7 @@ type Workids struct {
 }
 
 func (WorkIds *Workids) TableName() string {
-	return "Workids"
+	return "workids"
 }
 
 func init() {
